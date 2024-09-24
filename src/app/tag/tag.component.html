@@ -1,0 +1,11 @@
+<h1 class="title">Tag: {{tag}}</h1>
+<h2 class="title">Kapcsolódó tagek</h2>
+<div>
+    <h3 class="title" *ngIf="relTags.length == 0">Nincs</h3>
+    <div class="button-list">
+        <button mat-flat-button *ngFor="for let relatedTag of relTags" [routerLink]="['/tag', relatedTag]">{{relatedTag}}</button>
+    </div>
+</div>
+<h2 class="title">Képek</h2>
+<app-image-grid *ngIf="!loading" [images]="images"></app-image-grid>
+<p *ngIf="loading">Betöltés...</p>

@@ -1,0 +1,59 @@
+<h1 class="title">User page</h1>
+
+<div class="user-data">
+        <img [src]="imageUrl" alt="Profile">
+
+            <p><span class="material-symbols-outlined">
+                person
+            </span>{{userData?.username?._content ?? "-"}}</p>
+
+            <p>
+            <span class="material-symbols-outlined">
+                alternate_email
+                </span>{{userData?.path_alias ?? ""}}
+            </p>
+            
+            
+            <p>
+            <span class="material-symbols-outlined">
+                id_card
+                </span>
+
+                {{userData?.realname?._content ?? "-"}}
+            </p>
+
+            <p><span class="material-symbols-outlined">
+                pin_drop
+                </span>{{userData?.location?._content ?? "-"}}</p>
+            <p><span class="material-symbols-outlined">
+                publish
+                </span>{{userData?.photos?.firstdatetaken?._content ?? ""}}</p>
+            <p><span class="material-symbols-outlined">
+                functions
+                </span><span class="material-symbols-outlined">
+                    image
+                    </span> {{userData?.photos?.count?._content ?? ""}}</p>
+       
+        <h3>Description</h3>
+        <div>
+            {{userData?.description?._content ?? ""}}
+        </div>
+</div>
+
+
+<h2 class="title">Képek</h2>
+<details class="title">
+    <app-image-grid  [images]="images"></app-image-grid>
+</details>
+
+
+<h2 class="title">Kedvenc képek</h2>
+<details class="title">
+    <app-image-grid [images]="favImages"></app-image-grid>
+</details>
+
+
+<h2 class="title">Megjelölve</h2>
+<details class="title">
+    <app-image-grid [images]="mentionedImages"></app-image-grid>
+</details>

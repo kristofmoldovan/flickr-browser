@@ -1,0 +1,45 @@
+
+    <table class="imageTable">
+        <tr *ngFor="let imageRow of imageTable">
+            <td *ngFor="let img of imageRow">
+                    <div class="imageCell">
+                        <img [src]="img.url_m" alt="kep" (click)="showImage(img)">
+                        <i [class.fa-regular]="!hasFavorite(img.id)" 
+                        [class.fa-solid]="hasFavorite(img.id)"
+                        class="fa-star star"
+                        (click)="switchFavorite(img, $event)"></i>
+                    </div>
+            
+            </td>
+        </tr>
+    </table>
+    
+
+<div id="container" *ngIf="getShownImage() ?? false" (click)="quitDetails()">
+    
+    <div class="outer-modal">
+        
+    
+    <button *ngIf="activeImageIndex" class="leftb" (click)="prev($event);">Előző</button>
+    <div class="modal" style="display: inline-block;">
+        
+        <img [src]="getShownImage()?.url_m" alt="Kép" style="display: inline-block;">
+        <div class="details" style="display: inline-block;">
+            <ul>
+                <li><h3>{{getShownImage()?.title}}</h3>
+                <li>Tulajdonos: <a [routerLink]="['/user', getShownImage()?.owner]">{{getShownImage()?.ownerNick}}</a></li>
+                <li>Készült: {{getShownImage()?.taken}}</li>
+                <li>Megtekintések: {{getShownImage()?.views}}</li>
+                <li>tagek: 
+                    <div style="overflow: auto; max-height: 80px;">
+                        <span *ngFor="let tag of getShownImage()?.tags"><a [routerLink]="['/tag', tag]">{{tag}}</a>, </span>
+                    </div>
+                </li>
+                <li>Leírás: <div style="overflow: auto; max-height: 80px;">{{getShownImage()?.description}}</div></li>
+            </ul>
+        </div>
+        
+    </div>
+    <button class="rightb" (click)="next($event)">Következő</button>
+</div>
+</div>

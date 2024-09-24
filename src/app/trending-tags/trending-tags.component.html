@@ -1,0 +1,18 @@
+
+<h1 class="title">Népszerű tagek</h1>
+<table class="imageTable">
+    <tr *ngFor="let tagRow of trendingTagsToday">
+        <td *ngFor="let tag of tagRow">
+            <a [routerLink]="['/tag', tag.text]">
+                <div class="tag-img-container">
+                        <span class="tag-title">{{tag.text}}</span>
+                        <img class="tag-img" [src]="getSrcOfTag(tag)"
+                            [alt]="tag.text">
+                </div>
+            </a>
+        </td>
+    </tr>
+        
+</table>
+    
+

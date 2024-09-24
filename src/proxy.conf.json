@@ -1,0 +1,8 @@
+{
+    "/services/rest": {
+        "target": "https://api.flickr.com/",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    }   
+}

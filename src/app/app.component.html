@@ -1,0 +1,36 @@
+<mat-toolbar color="red">
+    <mat-icon>image_search</mat-icon>
+    <button mat-button routerLink="/">Felfedezés</button>
+    <button mat-button routerLink="/trending">Népszerű tagek</button>
+    <button mat-button routerLink="/favorites">Kedvencek</button>
+    <button mat-button (click)="showSettings()">Beállítások</button>
+    <span class="example-spacer"></span>
+
+    <input class="form-control search-bar" placeholder="Keresett szöveg, tag, felhasználónév..."
+                [(ngModel)]="searchText" 
+                (keyup.enter)="doSearch()"
+                name="search" >
+
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" (click)="doSearch()">
+        <span class="material-symbols-outlined">
+            search
+        </span>
+    </button>
+</mat-toolbar>
+
+<div class="page-content">
+    <div *ngIf="settingsShown" id="container" (click)="quit()">
+        <div class="modal" style="display: inline-block;">
+          <p>API Kulcs beállítása</p>
+          <section (click)="$event.stopPropagation();">
+            <form>
+              <input type="text" placeholder="new API key" [(ngModel)]="tempKey" name="apikey">
+              <button class="primary" type="button"
+              (click)="setApiKey(tempKey)">SET</button>
+            </form>
+        </section>
+        </div>
+    </div>
+    <router-outlet></router-outlet>
+</div>
+

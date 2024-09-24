@@ -1,0 +1,20 @@
+<h1 class="title">Keresés</h1>
+
+<h2 class="title">Felhasználó</h2>
+<div class="button-list">
+    <button mat-flat-button *ngIf="foundUserId" [routerLink]="['/user', foundUserId]">
+        <span>Ugrás {{text}} oldalára</span></button>
+    <h4 class="title" *ngIf="!foundUserId">Nincs találat.</h4>
+</div>
+
+<h2 class="title">Tagek</h2>
+<div class="button-list">
+    <button mat-flat-button *ngFor="for let tag of words.slice(0, 10)" [routerLink]="['/tag', tag]">{{tag}}</button>
+</div>
+        
+
+
+<h2 class="title">Képek</h2>
+<h3 class="title" *ngIf="loading">Betöltés...</h3>
+<app-image-grid *ngIf="!loading" [images]="images"></app-image-grid>
+

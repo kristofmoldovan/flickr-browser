@@ -1,0 +1,27 @@
+.imageTable {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tag-img {
+    display: block;
+    object-fit: cover;
+    width: 15vw;
+    height: 8vw;
+}
+
+.tag-img-container {
+  position: relative;
+  text-align: center;
+  color: white;
+  z-index: 100;
+  z-index: -1;
+}
+
+.tag-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: large;
+}
